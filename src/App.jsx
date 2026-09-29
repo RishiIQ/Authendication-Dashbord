@@ -188,7 +188,7 @@ const App = () => {
         type: 'error',
         text: 'New password must be at least 6 characters',
       });
-      return;
+      return; 
     }
 
     if (newPassword !== confirmNewPassword) {
@@ -226,20 +226,23 @@ const App = () => {
 
   // Reusable class styles
   const pageBg =
-    'min-h-screen flex flex-col items-center justify-center bg-orange-100/20 px-4';
+    'min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4';
   const card =
-    'w-full max-w-sm bg-orange-100/80 hover:bg-orange-100/50 rounded-2xl shadow-md hover:shadow-lg hover:shadow-black/20 p-8 transition-shadow';
+    'w-full max-w-sm bg-white hover:bg-gray-100 rounded-2xl shadow-md hover:shadow-lg hover:shadow-black/20 p-8 transition-shadow';
   const cardCenter = `${card} text-center`;
-  const heading = 'text-2xl font-bold text-center text-orange-800 mb-6';
+  const heading = 'text-2xl font-bold text-center text-black mb-6';
   const label = 'text-sm font-medium text-gray-700';
   const input =
-    'border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent';
+    'border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent';
   const primaryBtn =
-    'mt-2 bg-orange-600/80 hover:bg-orange-700 disabled:opacity-50 text-white font-medium rounded-lg py-2 transition-colors flex items-center justify-center gap-2';
+    'mt-2 bg-gray-900 hover:bg-black hover:rounded-3xl disabled:opacity-50 text-white font-medium rounded-lg py-2 transition-colors flex items-center justify-center gap-2';
   const primaryBtnFull =
-    'w-full bg-orange-600/80 hover:bg-orange-700 text-white font-medium rounded-lg py-2 transition-colors';
-  const linkBtn = 'text-sm text-orange-600 hover:text-orange-800 hover:underline';
+    'w-full bg-gray-900/90 hover:rounded-3xl hover:bg-black text-white font-medium rounded-lg py-2 transition-colors';
+  const linkBtn = 'text-sm text-black hover:text-gray-800 hover:underline';
   const mutedLinkBtn = 'text-sm text-gray-500 hover:text-gray-700 hover:underline';
+
+  const toggleBtn =
+    'absolute inset-y-0 right-0 px-3 text-xs font-medium text-gray-700 hover:text-black';
 
   // Pages
 
@@ -252,7 +255,8 @@ const App = () => {
             <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-4 animate-bounce">
               <span className="text-3xl text-green-600">✓</span>
             </div>
-            <h2 className="text-2xl font-bold text-orange-800 mb-2">
+            
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">
               Login Successful
             </h2>
             <p className="text-sm text-gray-500">Redirecting to your dashboard…</p>
@@ -306,7 +310,7 @@ const App = () => {
                   <button
                     type="button"
                     onClick={() => setShowLoginPassword((v) => !v)}
-                    className="absolute inset-y-0 right-0 px-3 text-xs font-medium text-orange-700 hover:text-orange-900"
+                    className={toggleBtn}
                   >
                     {showLoginPassword ? 'Hide' : 'Show'}
                   </button>
@@ -319,7 +323,7 @@ const App = () => {
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="rounded border-gray-300 text-orange-600 focus:ring-orange-500"
+                    className="rounded border-gray-300 text-gray-600 focus:ring-black"
                   />
                   Remember Me
                 </label>
@@ -417,7 +421,7 @@ const App = () => {
                   <button
                     type="button"
                     onClick={() => setShowSignupPassword((v) => !v)}
-                    className="absolute inset-y-0 right-0 px-3 text-xs font-medium text-orange-700 hover:text-orange-900"
+                    className={toggleBtn}
                   >
                     {showSignupPassword ? 'Hide' : 'Show'}
                   </button>
@@ -441,7 +445,7 @@ const App = () => {
                   <button
                     type="button"
                     onClick={() => setShowSignupConfirm((v) => !v)}
-                    className="absolute inset-y-0 right-0 px-3 text-xs font-medium text-orange-700 hover:text-orange-900"
+                    className={toggleBtn}
                   >
                     {showSignupConfirm ? 'Hide' : 'Show'}
                   </button>
@@ -541,23 +545,26 @@ const App = () => {
 
     if (activePage === 'profile') {
       return (
-        <div className="min-h-screen bg-orange-50/40">
+        
+        <div className="min-h-screen bg-gray-50">
           {/* Top Navbar */}
-          <header className="bg-white border-b border-orange-100 shadow-sm sticky top-0 z-10">
+          <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-10">
             <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-orange-600/80 flex items-center justify-center">
+                
+                <div className="w-9 h-9 rounded-lg bg-gray-900 flex items-center justify-center">
                   <span className="text-white font-bold">U</span>
                 </div>
-                <h1 className="text-lg font-bold text-orange-800">User Dashboard</h1>
+                <h1 className="text-lg font-bold text-gray-900">User Dashboard</h1>
               </div>
 
               <div className="flex items-center gap-4">
                 <span className="text-sm text-gray-500 hidden sm:inline">
                   {user.mail}
                 </span>
-                <div className="w-9 h-9 rounded-full bg-orange-200 flex items-center justify-center">
-                  <span className="text-sm font-bold text-orange-700">
+                
+                <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center">
+                  <span className="text-sm font-bold text-gray-800">
                     {user.name[0]}
                   </span>
                 </div>
@@ -576,14 +583,15 @@ const App = () => {
           <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row gap-6">
             {/* Sidebar */}
             <aside className="w-full md:w-56 shrink-0">
-              <nav className="bg-orange-100/80 rounded-2xl shadow-md p-4 flex md:flex-col gap-2">
+              
+              <nav className="bg-gray-100 rounded-2xl shadow-md p-4 flex md:flex-col gap-2">
                 <button
                   type="button"
                   onClick={() => setProfileTab('profile')}
                   className={`w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     profileTab === 'profile'
-                      ? 'bg-orange-600/80 text-white'
-                      : 'text-orange-800 hover:bg-orange-200'
+                      ? 'bg-gray-900 text-white'
+                      : 'text-gray-800 hover:bg-gray-200'
                   }`}
                 >
                   Overview
@@ -593,8 +601,8 @@ const App = () => {
                   onClick={() => setProfileTab('settings')}
                   className={`w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     profileTab === 'settings'
-                      ? 'bg-orange-600/80 text-white'
-                      : 'text-orange-800 hover:bg-orange-200'
+                      ? 'bg-gray-900 text-white'
+                      : 'text-gray-800 hover:bg-gray-200'
                   }`}
                 >
                   Edit Profile
@@ -604,15 +612,15 @@ const App = () => {
 
             {/* Main content */}
             <main className="flex-1 min-w-0">
-              {/* Welcome banner */}
-              <div className="bg-orange-100/80 rounded-2xl shadow-md p-6 mb-6 flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-orange-200 flex items-center justify-center shrink-0">
-                  <span className="text-2xl font-bold text-orange-700">
+              
+              <div className="bg-gray-100 rounded-2xl shadow-md p-6 mb-6 flex items-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center shrink-0">
+                  <span className="text-2xl font-bold text-gray-800">
                     {user.name[0]}
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <h2 className="text-2xl font-bold text-orange-800 truncate">
+                  <h2 className="text-2xl font-bold text-gray-900 truncate">
                     Welcome back, {user.name}
                   </h2>
                   <p className="text-sm text-gray-600 truncate">
@@ -621,37 +629,37 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Stat cards */}
+              
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                <div className="bg-white rounded-2xl shadow-sm border border-orange-100 p-5">
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
                   <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
                     Projects
                   </p>
-                  <p className="text-2xl font-bold text-orange-800">12</p>
+                  <p className="text-2xl font-bold text-gray-900">12</p>
                 </div>
-                <div className="bg-white rounded-2xl shadow-sm border border-orange-100 p-5">
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
                   <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
                     Tasks Done
                   </p>
-                  <p className="text-2xl font-bold text-orange-800">48</p>
+                  <p className="text-2xl font-bold text-gray-900">48</p>
                 </div>
-                <div className="bg-white rounded-2xl shadow-sm border border-orange-100 p-5">
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
                   <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
                     Messages
                   </p>
-                  <p className="text-2xl font-bold text-orange-800">3</p>
+                  <p className="text-2xl font-bold text-gray-900">3</p>
                 </div>
               </div>
 
-              {/* Tab content card */}
-              <div className="bg-orange-100/80 rounded-2xl shadow-md p-6">
+              
+              <div className="bg-gray-100 rounded-2xl shadow-md p-6">
                 {profileTab === 'profile' && (
                   <div>
-                    <h3 className="text-lg font-bold text-orange-800 mb-4">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4">
                       Profile Overview
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="bg-white rounded-xl p-4 border border-orange-100">
+                      <div className="bg-white rounded-xl p-4 border border-gray-200">
                         <p className="text-xs uppercase tracking-wide text-gray-500">
                           Name
                         </p>
@@ -659,7 +667,7 @@ const App = () => {
                           {user.name}
                         </p>
                       </div>
-                      <div className="bg-white rounded-xl p-4 border border-orange-100">
+                      <div className="bg-white rounded-xl p-4 border border-gray-200">
                         <p className="text-xs uppercase tracking-wide text-gray-500">
                           Email
                         </p>
@@ -667,7 +675,7 @@ const App = () => {
                           {user.mail}
                         </p>
                       </div>
-                      <div className="bg-white rounded-xl p-4 border border-orange-100">
+                      <div className="bg-white rounded-xl p-4 border border-gray-200">
                         <p className="text-xs uppercase tracking-wide text-gray-500">
                           Designation
                         </p>
@@ -675,7 +683,7 @@ const App = () => {
                           {user.designation}
                         </p>
                       </div>
-                      <div className="bg-white rounded-xl p-4 border border-orange-100 sm:col-span-2">
+                      <div className="bg-white rounded-xl p-4 border border-gray-200 sm:col-span-2">
                         <p className="text-xs uppercase tracking-wide text-gray-500">
                           Bio
                         </p>
@@ -689,7 +697,7 @@ const App = () => {
                   <div className="flex flex-col gap-8">
                     {/* --- Profile details --- */}
                     <div>
-                      <h3 className="text-lg font-bold text-orange-800 mb-4">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4">
                         Edit Profile
                       </h3>
                       <div className="flex flex-col gap-4 max-w-md">
@@ -747,12 +755,12 @@ const App = () => {
                       </div>
                     </div>
 
-                    {/* Divider */}
-                    <div className="border-t border-orange-200" />
+                    
+                    <div className="border-t border-gray-200" />
 
                     {/* --- Change password --- */}
                     <div>
-                      <h3 className="text-lg font-bold text-orange-800 mb-4">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4">
                         Change Password
                       </h3>
 
@@ -792,7 +800,7 @@ const App = () => {
                             <button
                               type="button"
                               onClick={() => setShowCurrent((v) => !v)}
-                              className="absolute inset-y-0 right-0 px-3 text-xs font-medium text-orange-700 hover:text-orange-900"
+                              className={toggleBtn}
                             >
                               {showCurrent ? 'Hide' : 'Show'}
                             </button>
@@ -817,7 +825,7 @@ const App = () => {
                             <button
                               type="button"
                               onClick={() => setShowNew((v) => !v)}
-                              className="absolute inset-y-0 right-0 px-3 text-xs font-medium text-orange-700 hover:text-orange-900"
+                              className={toggleBtn}
                             >
                               {showNew ? 'Hide' : 'Show'}
                             </button>
@@ -847,7 +855,7 @@ const App = () => {
                             <button
                               type="button"
                               onClick={() => setShowConfirmNew((v) => !v)}
-                              className="absolute inset-y-0 right-0 px-3 text-xs font-medium text-orange-700 hover:text-orange-900"
+                              className={toggleBtn}
                             >
                               {showConfirmNew ? 'Hide' : 'Show'}
                             </button>
@@ -878,7 +886,11 @@ const App = () => {
       {/* Toast Notification */}
       {toast.show && (
         <div className="fixed bottom-6 right-6 z-50 animate-fade-in bg-gray-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 border border-gray-700">
-          <span className="w-2 h-2 rounded-full bg-green-400"></span>
+          <span
+            className={`w-2 h-2 rounded-full ${
+              toast.type === 'error' ? 'bg-red-400' : 'bg-green-400'
+            }`}
+          ></span>
           <span className="text-sm font-medium">{toast.text}</span>
         </div>
       )}
